@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>My Future Village House — Hiyansh Zala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --gold:#C9973A; --gold-light:#E8C06A; --gold-dim:rgba(201,151,58,0.15);
+  --gold-line:rgba(201,151,58,0.32); --bg:#080A0D; --bg2:#0D1017; --bg3:#111620;
+  --glass:rgba(255,255,255,0.05); --border:rgba(255,255,255,0.07);
+  --border-gold:rgba(201,151,58,0.22); --text:#F0EDE8;
+  --text-dim:rgba(240,237,232,0.55); --text-muted:rgba(240,237,232,0.3);
+  --ease:cubic-bezier(0.25,0.46,0.45,0.94);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:22px 48px;transition:all 0.4s var(--ease);border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(8,10,13,0.94);backdrop-filter:blur(20px);padding:14px 48px;border-bottom-color:var(--border)}
+.nav-logo{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold)}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-dim);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://physical-aquamarine-ucbkkc3u.edgeone.dev/Imagine.png') center/cover no-repeat;transform:scale(1.1);will-change:transform}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,13,0.5) 0%,rgba(8,10,13,0.2) 40%,rgba(8,10,13,0.75) 80%,rgba(8,10,13,1) 100%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,151,58,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(201,151,58,0.035) 1px,transparent 1px);background-size:64px 64px;animation:gFade 2s 0.8s var(--ease) forwards;opacity:0}
+@keyframes gFade{to{opacity:1}}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;animation:hReveal 1.2s 0.2s var(--ease) forwards;opacity:0;transform:translateY(36px)}
+@keyframes hReveal{to{opacity:1;transform:none}}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:4.5px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:inline-flex;align-items:center;gap:14px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';display:block;width:36px;height:1px;background:var(--gold);opacity:0.45}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,9vw,7rem);font-weight:300;line-height:1.04;color:var(--text);margin-bottom:22px}
+.hero-title em{font-style:italic;color:var(--gold-light);display:block}
+.hero-sub{font-size:clamp(0.88rem,1.5vw,1.05rem);color:var(--text-dim);font-weight:300;letter-spacing:0.4px;max-width:440px;margin:0 auto 52px;line-height:1.75}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:var(--gold-dim);border:1px solid var(--gold-line);color:var(--gold);padding:14px 34px;border-radius:100px;font-size:10px;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:background 0.25s,transform 0.2s}
+.hero-cta:hover{background:rgba(201,151,58,0.25);transform:translateY(-2px)}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--text-muted);font-size:8px;letter-spacing:3.5px;text-transform:uppercase}
+.hero-scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--gold),transparent);animation:sPulse 2s ease-in-out infinite}
+@keyframes sPulse{0%,100%{opacity:0.3}50%{opacity:1}}
+
+/* OVERVIEW STRIP */
+.overview-wrap{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.overview-inner{max-width:1200px;margin:0 auto;padding:72px 48px;display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr 1px 1fr;align-items:center}
+.ov-div{height:70px;background:linear-gradient(to bottom,transparent,var(--border-gold),transparent);margin:0 auto}
+.ov-item{padding:0 36px;text-align:center}
+.ov-label{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.ov-icon{width:28px;height:28px;margin:0 auto 12px;opacity:0.65}
+.ov-value{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:400;color:var(--text);line-height:1.3}
+
+/* SECTION BASE */
+.sec{padding:120px 48px;max-width:1200px;margin:0 auto}
+.eyebrow{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--gold)}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.6rem);font-weight:300;line-height:1.12;color:var(--text);margin-bottom:14px}
+.sec-desc{font-size:0.9rem;color:var(--text-dim);line-height:1.82;max-width:500px}
+.gold-bar{width:44px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:22px 0}
+
+/* 2-COL GRID */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.split.rev{direction:rtl}
+.split.rev>*{direction:ltr}
+
+/* IMAGE VIEWER */
+.iv{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--bg3);cursor:zoom-in}
+.iv img{width:100%;transition:transform 0.6s var(--ease),filter 0.3s;filter:brightness(0.92)}
+.iv:hover img{transform:scale(1.035);filter:brightness(1)}
+.iv-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,10,13,0.65) 0%,transparent 50%);pointer-events:none}
+.iv-ctrl{position:absolute;bottom:18px;right:18px;width:38px;height:38px;border-radius:50%;background:rgba(8,10,13,0.75);backdrop-filter:blur(12px);border:1px solid var(--border-gold);color:var(--gold);display:flex;align-items:center;justify-content:center;transition:background 0.2s,transform 0.2s}
+.iv-ctrl:hover{background:var(--gold-dim);transform:scale(1.1)}
+.iv-ctrl svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
+.iv-lbl{position:absolute;bottom:18px;left:18px;font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);background:rgba(8,10,13,0.75);backdrop-filter:blur(10px);border:1px solid var(--border-gold);padding:5px 13px;border-radius:100px}
+/* blueprint corners */
+.iv::before,.iv::after{content:'';position:absolute;z-index:3;width:18px;height:18px;border-color:var(--gold);border-style:solid;opacity:0.55;pointer-events:none}
+.iv::before{top:14px;left:14px;border-width:2px 0 0 2px}
+.iv::after{top:14px;right:14px;border-width:2px 2px 0 0}
+.iv-bl,.iv-br{position:absolute;z-index:3;width:18px;height:18px;border-color:var(--gold);border-style:solid;opacity:0.55;pointer-events:none}
+.iv-bl{bottom:14px;left:14px;border-width:0 0 2px 2px}
+.iv-br{bottom:14px;right:14px;border-width:0 2px 2px 0}
+
+/* PLAN SECTIONS */
+.plan-dark{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.plan-inner{max-width:1200px;margin:0 auto;padding:120px 48px;display:grid;grid-template-columns:300px 1fr;gap:80px;align-items:center}
+.plan-inner.r{grid-template-columns:1fr 300px}
+
+/* FEATURES */
+.feat-wrap{max-width:1200px;margin:0 auto;padding:120px 48px}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:14px;margin-top:60px}
+.feat-card{background:var(--glass);border:1px solid var(--border);border-radius:16px;padding:34px 26px;position:relative;overflow:hidden;transition:border-color 0.3s,background 0.3s,transform 0.3s}
+.feat-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(201,151,58,0.08),transparent 65%);opacity:0;transition:opacity 0.3s}
+.feat-card:hover{border-color:var(--border-gold);background:rgba(201,151,58,0.04);transform:translateY(-4px)}
+.feat-card:hover::before{opacity:1}
+.feat-ico{width:46px;height:46px;background:var(--gold-dim);border:1px solid var(--gold-line);border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.feat-ico svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.feat-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--text);margin-bottom:7px}
+.feat-desc{font-size:0.81rem;color:var(--text-dim);line-height:1.68}
+.feat-n{position:absolute;top:18px;right:22px;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--text-muted)}
+
+/* VISION */
+.vision{background:linear-gradient(135deg,var(--bg2),var(--bg3));border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.vision-in{max-width:860px;margin:0 auto;padding:140px 40px;text-align:center}
+.vq{font-family:'Cormorant Garamond',serif;font-size:clamp(1.55rem,3.5vw,2.7rem);font-weight:300;font-style:italic;line-height:1.52;color:var(--text);position:relative}
+.vq::before{content:'\201C';font-size:7rem;color:var(--gold);opacity:0.13;position:absolute;top:-36px;left:-16px;line-height:1;font-style:normal;font-family:'Cormorant Garamond',serif}
+.vq span{color:var(--gold-light)}
+.v-attr{margin-top:36px;font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;justify-content:center;gap:12px}
+.v-attr::before,.v-attr::after{content:'';display:block;width:28px;height:1px;background:var(--gold);opacity:0.45}
+
+/* TRACKER */
+.track-sec{max-width:1200px;margin:0 auto;padding:120px 48px}
+.timeline{margin-top:64px;display:flex;position:relative}
+.timeline::before{content:'';position:absolute;top:27px;left:0;right:0;height:1px;background:var(--border);z-index:0}
+.t-step{flex:1;display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;padding:0 6px}
+.t-node{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:18px;border:2px solid var(--border);background:var(--bg);transition:border-color 0.3s,background 0.3s}
+.t-node svg{width:18px;height:18px;fill:none;stroke:var(--text-muted);stroke-width:1.5;transition:stroke 0.3s}
+.t-step.active .t-node{border-color:var(--gold);background:var(--gold-dim)}
+.t-step.active .t-node svg{stroke:var(--gold)}
+.t-lbl{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);text-align:center;transition:color 0.3s}
+.t-step.active .t-lbl{color:var(--gold)}
+.t-sub{margin-top:5px;font-size:0.72rem;color:var(--text-muted);text-align:center}
+.t-step.active .t-sub{color:var(--text-dim)}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:56px 48px;display:flex;align-items:center;justify-content:space-between}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--text)}
+.f-logo span{color:var(--gold)}
+.f-meta{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);text-align:center;line-height:1.9}
+.f-by{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);text-align:right}
+.f-by span{color:var(--gold-light);display:block;margin-top:4px;letter-spacing:3px}
+
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;z-index:999;background:rgba(8,10,13,0.97);backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.lb.open{opacity:1;pointer-events:all}
+.lb img{max-width:90vw;max-height:86vh;object-fit:contain;border-radius:10px;border:1px solid var(--border-gold);transform:scale(0.9);transition:transform 0.4s var(--ease)}
+.lb.open img{transform:scale(1)}
+.lb-close{position:absolute;top:28px;right:28px;width:46px;height:46px;border-radius:50%;background:var(--glass);border:1px solid var(--border);color:var(--text);font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.2s,border-color 0.2s}
+.lb-close:hover{background:var(--gold-dim);border-color:var(--border-gold)}
+.lb-lbl{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+
+/* REVEAL */
+.r{opacity:0;transform:translateY(26px);transition:opacity 0.85s var(--ease),transform 0.85s var(--ease)}
+.rl{opacity:0;transform:translateX(-26px);transition:opacity 0.85s var(--ease),transform 0.85s var(--ease)}
+.rr{opacity:0;transform:translateX(26px);transition:opacity 0.85s var(--ease),transform 0.85s var(--ease)}
+.r.v,.rl.v,.rr.v{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:16px 24px}
+  nav.scrolled{padding:12px 24px}
+  .nav-links{display:none}
+  .overview-inner{grid-template-columns:1fr 1fr;gap:0}
+  .ov-div{display:none}
+  .ov-item{border-bottom:1px solid var(--border);padding:28px 20px}
+  .split,.plan-inner,.plan-inner.r{grid-template-columns:1fr;gap:40px;padding:80px 24px}
+  .split.rev{direction:ltr}
+  .sec,.feat-wrap,.track-sec{padding:80px 24px}
+  .timeline{flex-direction:column;gap:0}
+  .timeline::before{display:none}
+  .t-step{flex-direction:row;gap:18px;padding:16px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+  .t-node{margin-bottom:0;flex-shrink:0}
+  .t-lbl,.t-sub{text-align:left}
+  footer{flex-direction:column;gap:20px;padding:40px 24px;text-align:center}
+  .f-by{text-align:center}
+  .vision-in{padding:80px 24px}
+}
+@media(max-width:520px){
+  .overview-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">HZ · MFVH</div>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#elevation">Elevation</a></li>
+    <li><a href="#plans">Plans</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#vision">Vision</a></li>
+    <li><a href="#tracker">Progress</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Architectural Concept · 2026</div>
+    <h1 class="hero-title">My Future<br/><em>Village House</em></h1>
+    <p class="hero-sub">A vision for the life I want to build — where family, technology, and village peace come together.</p>
+    <a href="#overview" class="hero-cta">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      Explore the Vision
+    </a>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    Scroll
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="overview-wrap" id="overview">
+  <div class="overview-inner">
+    <div class="ov-item r">
+      <svg class="ov-icon" viewBox="0 0 28 28" fill="none" stroke="#C9973A" stroke-width="1.4"><path d="M4 26V11L14 4l10 7v15H4z"/><rect x="9" y="17" width="4" height="9"/><rect x="15" y="11" width="4" height="5" rx="0.5"/></svg>
+      <div class="ov-label">Location</div>
+      <div class="ov-value">My Village</div>
+    </div>
+    <div class="ov-div"></div>
+    <div class="ov-item r">
+      <svg class="ov-icon" viewBox="0 0 28 28" fill="none" stroke="#C9973A" stroke-width="1.4"><rect x="3" y="3" width="22" height="22" rx="2"/><path d="M3 10h22M10 10v18M3 18h7"/></svg>
+      <div class="ov-label">Style</div>
+      <div class="ov-value">Modern Village Villa</div>
+    </div>
+    <div class="ov-div"></div>
+    <div class="ov-item r">
+      <svg class="ov-icon" viewBox="0 0 28 28" fill="none" stroke="#C9973A" stroke-width="1.4"><circle cx="14" cy="14" r="10"/><path d="M14 8v6l4 2"/></svg>
+      <div class="ov-label">Status</div>
+      <div class="ov-value">Dream Concept</div>
+    </div>
+    <div class="ov-div"></div>
+    <div class="ov-item r">
+      <svg class="ov-icon" viewBox="0 0 28 28" fill="none" stroke="#C9973A" stroke-width="1.4"><circle cx="14" cy="9" r="4"/><path d="M5 26c0-4.97 4.03-9 9-9s9 4.03 9 9"/></svg>
+      <div class="ov-label">Created By</div>
+      <div class="ov-value">Hiyansh Zala</div>
+    </div>
+  </div>
+</div>
+
+<!-- FRONT ELEVATION -->
+<div class="sec" id="elevation">
+  <div class="split">
+    <div class="rl">
+      <div class="eyebrow">01 — Front Elevation</div>
+      <h2 class="sec-title">The Face of<br/><em style="font-style:italic;color:var(--gold-light)">My Dream</em></h2>
+      <div class="gold-bar"></div>
+      <p class="sec-desc">A modern farmhouse-tech villa designed from the ground up. Warm stone cladding, dark steel frames, and generous glazing — the perfect blend of village warmth and contemporary precision.</p>
+      <div style="margin-top:32px;display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;gap:16px;align-items:center"><div style="width:28px;height:1px;background:var(--gold);opacity:0.4;flex-shrink:0"></div><span style="font-size:0.82rem;color:var(--text-dim)">2-floor structure with rooftop terrace</span></div>
+        <div style="display:flex;gap:16px;align-items:center"><div style="width:28px;height:1px;background:var(--gold);opacity:0.4;flex-shrink:0"></div><span style="font-size:0.82rem;color:var(--text-dim)">Modern farmhouse + tech villa aesthetic</span></div>
+        <div style="display:flex;gap:16px;align-items:center"><div style="width:28px;height:1px;background:var(--gold);opacity:0.4;flex-shrink:0"></div><span style="font-size:0.82rem;color:var(--text-dim)">2,000 sq.ft built-up on a 7,000 sq.ft plot</span></div>
+        <div style="display:flex;gap:16px;align-items:center"><div style="width:28px;height:1px;background:var(--gold);opacity:0.4;flex-shrink:0"></div><span style="font-size:0.82rem;color:var(--text-dim)">3 bedrooms · 3 bathrooms · 2-car parking</span></div>
+      </div>
+    </div>
+    <div class="iv rr" onclick="openLb('https://physical-aquamarine-ucbkkc3u.edgeone.dev/Imagine.png','Front Elevation Render')">
+      <img src="front-view.png" alt="3D Front Elevation of Hiyansh's dream house" loading="lazy"/>
+      <div class="iv-overlay"></div>
+      <div class="iv-bl"></div><div class="iv-br"></div>
+      <div class="iv-lbl">Front Elevation</div>
+      <div class="iv-ctrl"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+    </div>
+  </div>
+</div>
+
+<!-- FLOOR PLAN -->
+<div class="plan-dark" id="plans">
+  <div class="plan-inner">
+    <div class="rl">
+      <div class="eyebrow">02 — Floor Plan</div>
+      <h2 class="sec-title">Every Room,<br/>Planned with Purpose</h2>
+      <div class="gold-bar"></div>
+      <p class="sec-desc">Ground floor hosts living room, dining, kitchen, guest bedroom, parents' bedroom and study. First floor has master suite, family lounge, bedroom 2, balcony and open terrace.</p>
+      <div style="margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div style="background:var(--gold-dim);border:1px solid var(--border-gold);border-radius:10px;padding:16px 14px">
+          <div style="font-family:'Space Mono',monospace;font-size:7.5px;letter-spacing:2px;color:var(--gold);margin-bottom:4px">GROUND FLOOR</div>
+          <div style="font-size:0.92rem;color:var(--text)">1,050 sq.ft</div>
+        </div>
+        <div style="background:var(--gold-dim);border:1px solid var(--border-gold);border-radius:10px;padding:16px 14px">
+          <div style="font-family:'Space Mono',monospace;font-size:7.5px;letter-spacing:2px;color:var(--gold);margin-bottom:4px">FIRST FLOOR</div>
+          <div style="font-size:0.92rem;color:var(--text)">950 sq.ft</div>
+        </div>
+      </div>
+    </div>
+    <div class="iv rr" onclick="openLb('https://sweet-salmon-csedszr8.edgeone.dev/plan.png','Floor Plan — Ground &amp; First Floor')">
+      <img src="floor-plan.png" alt="Floor plan showing ground and first floor layout" loading="lazy"/>
+      <div class="iv-overlay"></div>
+      <div class="iv-bl"></div><div class="iv-br"></div>
+      <div class="iv-lbl">Floor Plan</div>
+      <div class="iv-ctrl"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+    </div>
+  </div>
+</div>
+
+<!-- SITE PLAN / BLUEPRINT -->
+<div class="plan-inner r" style="max-width:1200px;margin:0 auto;padding:120px 48px">
+  <div class="iv rl" onclick="openLb('https://social-olive-tvpqhqa1.edgeone.dev/Blueprint.png','Blueprint &amp; Site Plan')">
+    <img src="site-plan.png" alt="Full blueprint and site plan" loading="lazy"/>
+    <div class="iv-overlay"></div>
+    <div class="iv-bl"></div><div class="iv-br"></div>
+    <div class="iv-lbl">Blueprint · Site Plan</div>
+    <div class="iv-ctrl"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+  </div>
+  <div class="rr">
+    <div class="eyebrow">03 — Site Plan</div>
+    <h2 class="sec-title">The Full<br/>Landscape Vision</h2>
+    <div class="gold-bar"></div>
+    <p class="sec-desc">A 140m × 50m plot with a sweeping front lawn, dedicated driveway for 2 cars, a backyard garden, and reserved space for a future workshop or lab. The land breathes life into the concept.</p>
+    <div style="margin-top:28px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:16px;align-items:center"><div style="width:28px;height:1px;background:var(--gold);opacity:0.4;flex-shrink:0"></div><span style="font-size:0.82rem;color:var(--text-dim)">Large front lawn &amp; backyard garden</span></div>
+      <div style="display:flex;gap:16px;align-items:center"><div style="width:28px;height:1px;background:var(--gold);opacity:0.4;flex-shrink:0"></div><span style="font-size:0.82rem;color:var(--text-dim)">Dedicated 2-car driveway entrance</span></div>
+      <div style="display:flex;gap:16px;align-items:center"><div style="width:28px;height:1px;background:var(--gold);opacity:0.4;flex-shrink:0"></div><span style="font-size:0.82rem;color:var(--text-dim)">Future workshop / lab reserved (20×15 ft)</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="feat-wrap" id="features">
+  <div class="r">
+    <div class="eyebrow">04 — Key Features</div>
+    <h2 class="sec-title">Designed for the<br/>Life I Want to Live</h2>
+    <div class="gold-bar"></div>
+    <p class="sec-desc">Every feature carefully chosen to support family, technology, nature, and future growth — all in the heart of a village.</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card r"><div class="feat-n">01</div>
+      <div class="feat-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+      <div class="feat-title">Spacious Living Areas</div>
+      <div class="feat-desc">A 16×15 ft living room and open-plan dining create a generous, airy space for the whole family to gather every day.</div>
+    </div>
+    <div class="feat-card r"><div class="feat-n">02</div>
+      <div class="feat-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="feat-title">Family-Oriented Design</div>
+      <div class="feat-desc">Parents' room on ground floor, master suite upstairs with a dress room, and a dedicated family lounge for togetherness.</div>
+    </div>
+    <div class="feat-card r"><div class="feat-n">03</div>
+      <div class="feat-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+      <div class="feat-title">Coding &amp; Study Room</div>
+      <div class="feat-desc">A private 12×12 ft room fully dedicated to focus, deep work, learning, and building the future through technology.</div>
+    </div>
+    <div class="feat-card r"><div class="feat-n">04</div>
+      <div class="feat-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <div class="feat-title">Open Terrace</div>
+      <div class="feat-desc">A 36×12 ft rooftop terrace for stargazing, morning tea, and breathing fresh village air under an open sky.</div>
+    </div>
+    <div class="feat-card r"><div class="feat-n">05</div>
+      <div class="feat-ico"><svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/><path d="M12 8v5l3 3"/></svg></div>
+      <div class="feat-title">Green Lawn</div>
+      <div class="feat-desc">A sweeping front lawn and backyard garden to stay rooted in nature, community, and the beauty of village seasons.</div>
+    </div>
+    <div class="feat-card r"><div class="feat-n">06</div>
+      <div class="feat-ico"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+      <div class="feat-title">Modern Architecture</div>
+      <div class="feat-desc">Clean lines, stone cladding, dark steel frames, and large glass panes — a design that stands beautifully for decades.</div>
+    </div>
+    <div class="feat-card r"><div class="feat-n">07</div>
+      <div class="feat-ico"><svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></div>
+      <div class="feat-title">Village Lifestyle</div>
+      <div class="feat-desc">Situated in the village — fresh air, open skies, warm community, and a slower, more meaningful pace of life.</div>
+    </div>
+    <div class="feat-card r"><div class="feat-n">08</div>
+      <div class="feat-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
+      <div class="feat-title">Future Expansion Space</div>
+      <div class="feat-desc">A reserved 20×15 ft zone in the backyard for a future workshop, lab, or extra living space as life evolves and grows.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VISION -->
+<div class="vision" id="vision">
+  <div class="vision-in">
+    <div class="eyebrow r" style="justify-content:center">05 — The Vision</div>
+    <blockquote class="vq r">
+      This house represents the future I want to create —<br/>
+      a place where <span>family, technology, peace,</span><br/>
+      and village life come together.
+    </blockquote>
+    <div class="v-attr r">Hiyansh Zala · Dream Concept · 2026</div>
+  </div>
+</div>
+
+<!-- TRACKER -->
+<div class="track-sec" id="tracker">
+  <div class="r">
+    <div class="eyebrow">06 — Construction Roadmap</div>
+    <h2 class="sec-title">The Journey Ahead</h2>
+    <div class="gold-bar"></div>
+    <p class="sec-desc">Every great house starts as a dream. Here is the roadmap from vision to reality — one milestone at a time.</p>
+  </div>
+  <div class="timeline r">
+    <div class="t-step active">
+      <div class="t-node">
+        <svg viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+      </div>
+      <div class="t-lbl">Dream Concept</div>
+      <div class="t-sub">In Progress ✦</div>
+    </div>
+    <div class="t-step">
+      <div class="t-node">
+        <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+      </div>
+      <div class="t-lbl">Final Design</div>
+      <div class="t-sub">Upcoming</div>
+    </div>
+    <div class="t-step">
+      <div class="t-node">
+        <svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      </div>
+      <div class="t-lbl">Land Purchase</div>
+      <div class="t-sub">Upcoming</div>
+    </div>
+    <div class="t-step">
+      <div class="t-node">
+        <svg viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+      </div>
+      <div class="t-lbl">Construction</div>
+      <div class="t-sub">Upcoming</div>
+    </div>
+    <div class="t-step">
+      <div class="t-node">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div class="t-lbl">Completion</div>
+      <div class="t-sub">The Dream</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">MY FUTURE <span>VILLAGE</span> HOUSE</div>
+  <div class="f-meta">Architectural Concept · 2026<br/>Dream it. Design it. Build it.</div>
+  <div class="f-by">Made by<span>HIYANSH ZALA</span></div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="closeLb()">
+  <button class="lb-close" onclick="closeLb()" aria-label="Close lightbox">✕</button>
+  <img id="lbImg" src="" alt="" onclick="event.stopPropagation()"/>
+  <div class="lb-lbl" id="lbLbl"></div>
+</div>
+
+<script>
+// NAV
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60), {passive:true});
+
+// PARALLAX
+const heroBg = document.getElementById('heroBg');
+window.addEventListener('scroll', () => {
+  if (scrollY < innerHeight * 1.3) heroBg.style.transform = `scale(1.1) translateY(${scrollY * 0.22}px)`;
+}, {passive:true});
+
+// SCROLL REVEAL
+const revEls = document.querySelectorAll('.r,.rl,.rr');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('v'), i * 55);
+      obs.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.1});
+revEls.forEach(el => obs.observe(el));
+
+// LIGHTBOX
+function openLb(src, label) {
+  const lb = document.getElementById('lb');
+  document.getElementById('lbImg').src = src;
+  document.getElementById('lbLbl').textContent = label;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() {
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+</script>
+</body>
+</html>
